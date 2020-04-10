@@ -1,0 +1,10 @@
+com\test\card_translate\tests\card\bank_products\BaseParameters.class
+com\test\card_translate\tests\card\bank_products\impl\DebitCard.class
+com\test\card_translate\tests\translate\constants\KeyTranslateConstants.class
+com\test\card_translate\tests\translate\constants\UrlTranslateConstants.class
+com\test\card_translate\tests\card\bank_products\impl\CreditCard.class
+com\test\card_translate\tests\card\bank_products\CardMethods.class
+com\test\card_translate\tests\card\bank_products\impl\Deposit.class
+com\test\card_translate\tests\card\bank_products\impl\CurrencyCard.class
+com\test\card_translate\tests\card\bank_products\DepositMethods.class
+com\test\card_translate\tests\translate\constants\DomenTranslateConstants.class
