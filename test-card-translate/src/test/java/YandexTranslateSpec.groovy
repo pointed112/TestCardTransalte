@@ -30,7 +30,7 @@ class YandexTranslateSpec extends Specification {
                 .build();
     }
 
-    def posivie_test() {
+    def positive_test() {
 
         given:
         try {
