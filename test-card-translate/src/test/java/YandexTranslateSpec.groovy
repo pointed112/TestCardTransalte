@@ -1,6 +1,5 @@
 import io.restassured.http.ContentType
 import org.apache.http.HttpException
-import org.junit.BeforeClass
 import spock.lang.Specification
 import io.restassured.builder.RequestSpecBuilder
 import io.restassured.filter.log.RequestLoggingFilter
@@ -19,16 +18,15 @@ import static org.hamcrest.CoreMatchers.hasItem;
 class YandexTranslateSpec extends Specification {
    private static RequestSpecification spec
 
-   @BeforeClass
-   def initSpec() {
+    def setupSpec() {
         spec = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .setBaseUri(DOMEN_TRANSLATE + URL_TRANSLATE)
                 .addFilter(new ResponseLoggingFilter())
                 .addFilter(new RequestLoggingFilter())
-                .addParam("key")
                 .build();
     }
+
 
     def positive_test() {
 
@@ -61,7 +59,7 @@ class YandexTranslateSpec extends Specification {
         try {
             given()
                     .spec(spec)
-                    .param("key", WRONG_KEY_TRANSLATE)
+                    .param("key", key)
                     .param("lang", EN_RU_LANG_TRANSLATE)
                     .param("text", actual)
                     .when().get()
@@ -77,7 +75,7 @@ class YandexTranslateSpec extends Specification {
             e.printStackTrace()
         }
             where:
-            actual  | expected
-            "hello" | "привет"
+            actual  | expected | key
+            "hello" | "привет" | WRONG_KEY_TRANSLATE
     }
 }
