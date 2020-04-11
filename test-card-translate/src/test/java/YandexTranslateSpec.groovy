@@ -16,10 +16,10 @@ import static org.hamcrest.CoreMatchers.hasItem;
 
 
 class YandexTranslateSpec extends Specification {
-   private static RequestSpecification spec
+   private static RequestSpecification requestSpecification
 
     def setupSpec() {
-        spec = new RequestSpecBuilder()
+        requestSpecification = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .setBaseUri(DOMEN_TRANSLATE + URL_TRANSLATE)
                 .addFilter(new ResponseLoggingFilter())
@@ -33,19 +33,19 @@ class YandexTranslateSpec extends Specification {
         given:
         try {
             given()
-                    .spec(spec)
-                    .param("key",KEY_TRANSLATE)
-                    .param("lang",EN_RU_LANG_TRANSLATE)
-                    .param("text",actual)
+                    .spec(requestSpecification)
+                    .param("key", KEY_TRANSLATE)
+                    .param("lang", EN_RU_LANG_TRANSLATE)
+                    .param("text", actual)
                     .when().get()
                     .then()
                     .assertThat()
                     .statusCode(200)
                     .and()
-                    .body("text",hasItem(expected))
+                    .body("text", hasItem(expected))
         }
         catch(HttpException e){
-            e.printStackTrace()
+            println(e)
         }
         where:
         actual            | expected
@@ -72,7 +72,7 @@ class YandexTranslateSpec extends Specification {
                     .body("message", equalTo(INVALID_KEY))
         }
         catch(HttpException e){
-            e.printStackTrace()
+            println(e)
         }
             where:
             actual  | expected | key
