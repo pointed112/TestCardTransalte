@@ -58,7 +58,7 @@ class YandexTranslateSpec extends Specification {
         given:
         try {
             given()
-                    .spec(spec)
+                    .spec(requestSpecification)
                     .param("key", key)
                     .param("lang", EN_RU_LANG_TRANSLATE)
                     .param("text", actual)
